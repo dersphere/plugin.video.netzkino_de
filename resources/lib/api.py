@@ -87,7 +87,6 @@ class NetzkinoApi():
         def get_image(attachments_list):
             for item in attachments_list:
                 if item.get('url', '') != '':
-                    print item['url']
                     return item['url']
 
         path = (
