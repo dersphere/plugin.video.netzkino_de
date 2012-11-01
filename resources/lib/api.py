@@ -25,6 +25,7 @@ from urllib2 import urlopen, Request, HTTPError, URLError
 MAIN_URL = 'http://www.netzkino.de/capi/'
 MOVIE_URL = ('http://mf.netzkinomobil.c.nmdn.net/netzkino_mobil'
              '/_definst_/mp4:%s/playlist.m3u8')
+RTMP_URL = 'rtmp://mf.netzkino.c.nmdn.net/netzkino/_definst_/mp4:%s'
 
 VISIBLE_CATEGORIES = (
     ('81', 'Neu bei Netzkino'),
@@ -83,6 +84,12 @@ class NetzkinoApi():
             bad_str = re.sub(r'<[^>]*?>', '', bad_str)
             return bad_str.replace('&#8211;', '-')
 
+        def get_image(attachments_list):
+            for item in attachments_list:
+                if item.get('url', '') != '':
+                    print item['url']
+                    return item['url']
+
         path = (
             'get_category_posts'
             '?count=%(movie_count)d'
@@ -106,13 +113,16 @@ class NetzkinoApi():
                 'title': clean_tags(item.get('title_plain')),
                 'content': clean_tags(item.get('content')),
                 'modified': item.get('modified'),
-                'image': item.get('attachments', [])[0].get('url'),
+                'image': get_image(item.get('attachments', [])),
                 'stream_path': item['custom_fields']['Streaming'][0]
             })
         return movies
 
     def get_stream_url(self, stream_path):
         return MOVIE_URL % stream_path
+
+    def get_rtmp_url(self, stream_path):
+        return RTMP_URL % stream_path
 
     def __get_json(self, url, path=None):
         if path:
