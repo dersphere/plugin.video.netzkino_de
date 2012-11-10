@@ -112,7 +112,10 @@ class NetzkinoApi():
                 'title': clean_tags(item.get('title_plain')),
                 'content': clean_tags(item.get('content')),
                 'modified': item.get('modified'),
-                'image': get_image(item.get('attachments', [])),
+                'image': (
+                    item.get('thumbnail') or
+                    get_image(item.get('attachments', []))
+                ),
                 'stream_path': item['custom_fields']['Streaming'][0]
             })
         return movies
