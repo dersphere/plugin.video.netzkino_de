@@ -59,7 +59,7 @@ class NetworkError(Exception):
     pass
 
 
-class NetzkinoApi():
+class NetzkinoApi:
 
     def get_categories(self, from_net=False):
         if from_net:

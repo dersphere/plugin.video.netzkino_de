@@ -20,7 +20,7 @@
 from xbmcswift2 import Plugin
 from resources.lib.api import NetzkinoApi, NetworkError
 
-plugin = Plugin()
+plugin = Plugin(addon_id='plugin.video.netzkino_de')
 api = NetzkinoApi()
 
 
