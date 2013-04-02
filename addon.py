@@ -56,6 +56,7 @@ def show_movies(category_id):
         } for item in category_items]
         return items
 
+    plugin.set_content('movies')
     items = get_movies(category_id)
     finish_kwargs = {}
     if plugin.get_setting('force_viewmode') == 'true':
