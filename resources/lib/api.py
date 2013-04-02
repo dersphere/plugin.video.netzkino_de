@@ -114,8 +114,8 @@ class NetzkinoApi():
                 'content': clean_tags(item.get('content')),
                 'modified': item.get('modified'),
                 'image': (
-                    item.get('thumbnail') or
-                    get_image(item.get('attachments', []))
+                    get_image(item.get('attachments', [])) or
+                    item.get('thumbnail', '')
                 ),
                 'stream_path': item['custom_fields']['Streaming'][0]
             })
