@@ -11,6 +11,10 @@
     <extension point="xbmc.addon.metadata">
         <language>de</language>
         <platform>all</platform>
+        <website>http://www.netzkino.de</website>
+        <source>https://github.com/dersphere/plugin.video.netzkino_de</source>
+        <forum></forum>
+        <email>sphere@dersphere.de</email>
         <summary lang="be">Free german movies</summary>
         <summary lang="da">Gratis Tyske film</summary>
         <summary lang="de">Konstenlose Spielfilme</summary>
