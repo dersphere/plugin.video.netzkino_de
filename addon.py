@@ -44,7 +44,7 @@ def show_movies(category_id):
         category_items = api.get_movies(category_id)
         items = [{
             'label': item['title'],
-            'icon': item['image'],
+            'thumbnail': item['image'],
             'info': {
                 'plot': item['content'] or '',
             },
